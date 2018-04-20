@@ -1,0 +1,222 @@
+.title{
+    font-family: 'Bubbler One', sans-serif;
+    font-size: 50px;
+    color: #121f35;
+    padding-top: 30px;
+}
+.textos{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 20px;
+    color: #273751;
+}
+#logo { float: left}
+
+
+.topnav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 0;
+    width: 100%;
+    height: 50px;
+    background-color: #47465b;
+    overflow: hidden;
+    /*background: url(http://4.bp.blogspot.com/-dVtgikk-kOY/UprtswP0yGI/AAAAAAAADag/Og0DtZ8t_oQ/s1600/header+base.png) no-repeat scroll top left;*/
+    
+}
+.topnav a {
+    float: left;
+    display: block;
+    color: 0000;
+    text-align: center;
+    padding: 10px 100px 20px 150px; 
+    text-decoration: none;
+    font-size: 25px;
+    color: white;
+    font-family: 'Open Sans Condensed', sans-serif;
+    border-bottom: 1px solid black;
+}
+.topnav a:hover {
+    background-color: #ddd;
+    color: black;
+    cursor: pointer;
+}
+
+
+#roles{
+    border: 1px inset black;
+    background-color: #eff7ff;
+    font-family: 'Muli', sans-serif;
+}
+
+.topnav .disabled {
+    pointer-events: none; 
+    cursor: wait;
+    background-color: #ddd;
+    text-decoration: none;
+}
+.User{
+    float: left;
+    width: 30%;
+    margin: 0px 30px;
+}
+.Dept{
+    float: left;
+    width: 30%;
+    margin: 0px 30px;
+}
+.Advisor{
+    float: left;
+    width: 30%;
+}
+.System{
+    float:left;
+    padding: 4px;
+    width: 50%;
+    
+}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 60px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 17px;
+    margin: 14px 60px;
+    cursor: pointer;
+    border-radius: 0px;
+}
+.button:hover {background-color: #6ca9e28c}
+.button:active {
+    background-color: #1f1f1f6b;
+    transform: translateY(4px);
+  }
+.button2 {background-color: #008CBA;}
+
+
+.inputs{
+    width: 60%;
+    padding: 8px 10px;
+    margin: 1px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Comfortaa', cursive;
+}
+.inputsReference{
+    width: 20%;
+    padding: 12px 10px;
+    margin: 1px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-family: 'Comfortaa', cursive;
+}
+.inputLarge{
+    width: 90%;
+    height: 100px;
+    padding: 12px 10px;
+    margin: 1px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    text-align: left;
+    font-family: 'Comfortaa', cursive;
+}
+  .loader {
+    position: relative;
+    margin-top: 20px;
+    width: 100%;
+    height: 6px;
+    background-color: #33302b;
+  }
+  @-webkit-keyframes spin {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+  }
+  
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+
+  .bar {
+    content: "";
+    display: inline;
+    position: absolute;
+    width: 0;
+    height: 100%;
+    left: 50%;
+    text-align: center;
+  }
+  .bar:nth-child(1) {
+    background-color: #5183e0;
+    animation: loading 3s linear infinite;
+  }
+  .bar:nth-child(2) {
+    background-color: #f3eea7;
+    animation: loading 3s linear 1s infinite;
+  }
+  .bar:nth-child(3) {
+    background-color: #fdba2c;
+    animation: loading 3s linear 2s infinite;
+  }
+  @keyframes loading {
+      from {left: 50%; width: 0;z-index:100;}
+      33.3333% {left: 0; width: 100%;z-index: 10;}
+      to {left: 0; width: 100%;}
+  }
+  fieldset {
+    margin: 1em 0; /*  space out the fieldsets a little*/
+    padding: 1em;
+    border : 1px solid #ccc;
+    background-color:rgb(243, 243, 243)
+}
+#snackbar {
+    visibility: hidden;
+    min-width: 250px;
+    margin-left: -125px;
+    background-color: rgb(82, 175, 136);
+    color: #fff;
+    text-align: center;
+    border-radius: 2px;
+    padding: 16px;
+    position: fixed;
+    z-index: 1;
+    left: 50%;
+    bottom: 30px;
+    font-size: 17px;
+}
+
+#snackbar.show {
+    visibility: visible;
+    -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    animation: fadein 0.5s, fadeout 0.5s 2.5s;
+}
+
+@-webkit-keyframes fadein {
+    from {bottom: 0; opacity: 0;} 
+    to {bottom: 30px; opacity: 1;}
+}
+
+@keyframes fadein {
+    from {bottom: 0; opacity: 0;}
+    to {bottom: 30px; opacity: 1;}
+}
+
+@-webkit-keyframes fadeout {
+    from {bottom: 30px; opacity: 1;} 
+    to {bottom: 0; opacity: 0;}
+}
+
+@keyframes fadeout {
+    from {bottom: 30px; opacity: 1;}
+    to {bottom: 0; opacity: 0;}
+}
+

@@ -1,0 +1,33 @@
+<div class="mydiv">
+    <input type="text" id="myInput" placeholder="Procurar registro" [(ngModel)]="filter">
+  <table id="table">
+    <thead>
+      <tr>
+        <th (click)="sort('date')">Dia/Hora</th>
+        <th>Usuario</th>
+        <th>Departamento</th>
+        <th>Gestor</th>
+        <th>Sistema</th>
+        <th>Modulo</th>
+        <th>Usuario Referencia</th>
+        <th>Atividade</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let r of res | filter:filter |  paginate: { itemsPerPage: 10, currentPage: p } | orderBy: key : reverse">
+        <td>{{r.hora | date:'dd/MM/yy hh:mm:ss'}}</td>
+        <td>{{r.email}}</td>
+        <td>{{r.departamento}}</td>
+        <td>{{r.gestor}}</td>
+        <td>{{r.sistema}}</td>
+        <td>{{r.modulo}}</td>
+        <td>{{r.referencia}}</td>
+        <td>{{r.atividade}}</td>
+      </tr>
+    </tbody>
+  </table>
+  <pagination-controls (pageChange)="p = $event"></pagination-controls>
+</div>
+<!-- <div align="right">
+    <button class="button button2" (click)="showMessage()">Apagar</button>
+</div> -->

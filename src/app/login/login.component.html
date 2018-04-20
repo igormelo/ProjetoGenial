@@ -1,0 +1,20 @@
+<div class="row" style="padding-top: 50px">
+    <div class="imgcontainer">
+        <img src="https://i.imgur.com/t8SSizK.png" alt="Avatar" class="avatar">
+    </div>
+        <div class="container">
+        <label style="font-family: 'Comfortaa', cursive;;font-size: 20px">Login </label>
+        <input type="text" [(ngModel)]="user.user" id="usuario" style="font-family: 'Comfortaa', cursive;;font-size: 20px; color: grey">
+
+        <label style="font-family: 'Comfortaa', cursive;;font-size: 20px">Senha</label>
+        <input [(ngModel)]="user.password" type="password" id="senha" class="validate" style="font-size: 20px">
+        <button class="button" (click)="login()" style="font-family: 'Anton', sans-serif;font-size: 20px">{{showLoading? 'Carregando...':'Login'}} </button> 
+        <div class="loader" *ngIf="isSended">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+    </div>
+
+<!--<div *ngIf="showLoading" class="loader"></div>-->
+</div>

@@ -1,0 +1,72 @@
+<div style="text-align:center">
+    <p class="title">
+      Solicitação de permissões
+    </p>
+    <p style="color: rgb(85, 198, 243); font-family: arial">  
+    {{guid}}
+    </p>
+</div>
+
+<div class="User">
+  <fieldset>
+      <legend class="textos">Usuário</legend>
+  <p style="font-family: 'Comfortaa', cursive;"> 
+    <input type="text" class="inputs" [(ngModel)]="usuario.name" placeholder="Nome"/>
+  </p>  
+  <p style="font-family: 'Comfortaa', cursive;">
+    <input type="text" class="inputs" [(ngModel)]="usuario.email" placeholder="Email"/>
+  </p>
+</fieldset>
+<fieldset>
+      <legend class="textos">Sistema</legend>
+      <p style="font-family: 'Comfortaa', cursive;">  
+      <input type="text" class="inputs" [(ngModel)]="sistema.nome" placeholder="Nome"/>
+    </p>
+  </fieldset>
+  <fieldset>
+      <legend class="textos">Módulo do Sistema</legend>
+      <p style="font-family: 'Comfortaa', cursive;">  
+      <input type="text" class="inputs" [(ngModel)]="sistema.modulo" placeholder="Ex: Ferramentas externas">
+      </p>
+    </fieldset> 
+</div>
+
+<div class="Dept">
+  <fieldset>
+    <legend class="textos">Departamento</legend>
+    <p style="font-family: 'Comfortaa', cursive;"> 
+      <input type="text" class="inputs" [(ngModel)]="usuario.departamento" placeholder="Ex: T.i, Comercial"/>
+    </p>
+    </fieldset>
+    <fieldset>
+        <legend  class="textos">Gestor</legend>
+        <p style="font-family: 'Comfortaa', cursive;">   
+          <input type="text" class="inputs" [(ngModel)]="usuario.gestor" placeholder="Nome do gestor">
+        </p>
+      </fieldset>
+
+      <div>
+        <fieldset>
+        <legend class="textos">Atividade a ser executada</legend>
+        <textarea class="inputLarge" rows="50" cols="40" [(ngModel)]="sistema.atividade"></textarea>
+      </fieldset>
+        <button class="button button2"(click)="send()">Solicitar</button>
+      </div> 
+      <div id="snackbar">Solicitação com sucesso</div>
+</div>
+
+<div class="Advisor">
+  <fieldset>
+  <legend class="textos">Referência</legend>
+    <p style="font-family: 'Comfortaa', cursive;">   
+        <input type="radio" (click)="Yes()"name='myfield'>Sim
+        <input type="radio" name='myfield' (click)="No()">Não
+    </p>
+  </fieldset>
+</div>
+<div *ngIf="this.isReferenced">
+  <input type="text" placeholder="Usuario" class="inputsReference" [(ngModel)]="usuario.userReference">
+</div>
+<div *ngIf="!this.isReferenced">
+    <input type="text" placeholder="Lista/Perfil de acesso" class="inputsReference" [(ngModel)]="sistema.funcionalidade">
+</div>

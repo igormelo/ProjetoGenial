@@ -1,0 +1,96 @@
+.User{
+    float: left;
+    width: 30%;
+    margin: 0px 30px;
+}
+.Dept{
+    float: left;
+    width: 30%;
+    margin: 0px 30px;
+}
+.Advisor{
+    float: left;
+    width: 30%;
+}
+.System{
+    float:left;
+    padding: 4px;
+    width: 50%;
+    
+}
+.title{
+    font-family: 'Questrial', sans-serif;
+    font-size: 60px;
+    color: #121f35;
+}
+.textos{
+    font-family: 'Quicksand', sans-serif;
+    font-size: 30px;
+    color: #273751;
+}
+#table {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    font-size: 15px;
+    height: 100%;
+
+}
+#table td, #table th{
+    border: 1px solid #ddd;
+    padding: 15px;
+}
+#table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4b586d;
+    color: white;
+}
+#table tr{
+    cursor: pointer;
+    color: rgb(26, 23, 23);
+}
+#table tr:nth-child(even){background-color: #f2f2f2;}
+#table tr:hover {background-color: #ddd;}
+.mydiv{
+    padding-top: 5%;
+  vertical-align: top;
+}
+.button {
+    background-color: #4CAF50; /* Green */
+    border: none;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 14px 100px;
+    cursor: pointer;
+    border-radius: 0px;
+}
+.button:hover {background-color: #6ca9e28c}
+
+.button2 {background-color: #008CBA;}
+
+.example-container {
+    display: flex;
+    flex-direction: column;
+    min-width: 300px;
+  }
+  
+  .mat-table {
+    overflow: auto;
+    max-height: 500px;
+  }
+  #myInput {
+    background-image: url('http://i47.tinypic.com/r02vbq.png');
+    background-position: -10px -12px;
+    background-repeat: no-repeat;
+    width: 100%;
+    font-size: 16px;
+    padding: 12px 20px 12px 40px;
+    border: 1px solid #ddd;
+    margin-bottom: 12px;
+  }
