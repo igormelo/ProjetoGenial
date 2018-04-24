@@ -61,14 +61,15 @@
     background-color: #4CAF50; /* Green */
     border: none;
     color: white;
-    padding: 15px 20px;
+    padding: 10px 10px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
-    margin: 14px 100px;
+    margin: 5px 50px;
     cursor: pointer;
     border-radius: 0px;
+    float: right;
 }
 .button:hover {background-color: #6ca9e28c}
 
@@ -88,7 +89,7 @@
     background-image: url('http://i47.tinypic.com/r02vbq.png');
     background-position: -10px -12px;
     background-repeat: no-repeat;
-    width: 100%;
+    width: 80%;
     font-size: 16px;
     padding: 12px 20px 12px 40px;
     border: 1px solid #ddd;

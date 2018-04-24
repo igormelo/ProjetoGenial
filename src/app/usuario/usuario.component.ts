@@ -7,7 +7,7 @@ import 'rxjs/add/operator/toPromise';
 import { headersToString } from 'selenium-webdriver/http';
 import { UserLogin } from '../user-login';
 import { UUID } from 'angular2-uuid';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Route, Router, NavigationExtras } from '@angular/router';
 import { UserService } from '../services/user.service';
 
 @Component({
@@ -24,11 +24,10 @@ guid: any;
 header: Headers = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*',
 'Accept': 'application/json'
 });
-  constructor(private ad: AngularFireDatabase, private http: Http, private userService: UserService) { }
+  constructor(private ad: AngularFireDatabase, private http: Http, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
-    this.userService.getGuid().subscribe(data => console.log(data));
-    this.userService.getCountries().subscribe(data => console.log(data));
+    this.userService.getGuid().subscribe(data => this.guid = data);
     this.isSended = false;
   }
   showSnack(){
@@ -64,8 +63,12 @@ header: Headers = new Headers({'Content-Type': 'application/json', 'Access-Contr
       this.isSended = true;
       this.showSnack();
       setTimeout(()=>{
-        location.reload();
-        window.open("status", "_blank");
+        let navigation: NavigationExtras = {
+          queryParams: {
+            guid: this.guid
+          }
+        }
+        this.router.navigate(["status"], navigation);
       },1000)
     },(e: any) =>{
       this.isSended = false;

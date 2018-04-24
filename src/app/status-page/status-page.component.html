@@ -1,17 +1,24 @@
 <div class="mydiv">
-    <input type="text" id="myInput" placeholder="Procurar registro" [(ngModel)]="filter">
-  <table id="table">
-    <thead>
-      <tr>
-        <th>Id</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>{{this.guid}}</td>
-        <td>Solicitado</td>
-      </tr>
-    </tbody>
-  </table>
+  <fieldset>
+      <legend class="textos">Pesquisar</legend>
+    <input type="text" id="myInput" placeholder="Procurar registro" [(ngModel)]="filter"> <button class="button button2" (click)="search()">Procurar</button>
+    </fieldset>
+<table id="table">
+  <thead>
+    <tr>
+      <th>Hora</th>
+      <th>Id</th>
+      <th>Atividade</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let r of res | filter:filter">
+      <td *ngIf="filter">{{r.hora | date:'dd/MM/yy hh:mm:ss'}}</td>
+      <td *ngIf="filter">{{r.id}}</td>
+      <td *ngIf="filter">{{r.atividade}}</td>
+      <td *ngIf="filter">Pendente</td>
+    </tr>
+  </tbody>
+</table>
 </div>

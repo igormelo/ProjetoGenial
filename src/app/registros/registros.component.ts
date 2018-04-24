@@ -3,6 +3,7 @@ import { AngularFireDatabase, AngularFireList } from 'angularfire2/database';
 import { Observable } from 'rxjs/Observable';
 import { System } from '../system';
 import {MatPaginator, MatTableDataSource} from '@angular/material';
+import { UserService } from '../services/user.service';
 
 
 @Component({
@@ -16,7 +17,7 @@ item: AngularFireList<any[]>
 p: number = 1;
 key: string = 'date';
 reverse: boolean = false;
-  constructor(public db: AngularFireDatabase) {
+  constructor(public db: AngularFireDatabase, private userService: UserService) {
     this.item = this.db.list('registros');
   }
   ngOnInit() {
