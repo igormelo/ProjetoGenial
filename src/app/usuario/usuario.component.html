@@ -2,7 +2,7 @@
     <p class="title">
       Solicitação de permissões
     </p>
-    <p style="color: rgb(85, 198, 243); font-family: arial">  
+    <p style="color: rgb(85, 198, 243); font-family: 'Lato', sans-serif" *ngIf="this.guid">  
     <b style="color: black">Id da solicitação:</b> {{guid}}
     </p>
 </div>
@@ -20,13 +20,13 @@
 <fieldset>
       <legend class="textos">Sistema</legend>
       <p style="font-family: 'Comfortaa', cursive;">  
-      <input type="text" class="inputs" [(ngModel)]="sistema.nome" placeholder="Nome"/>
+      <input type="text" class="inputs" [(ngModel)]="usuario.sistema" placeholder="Nome"/>
     </p>
   </fieldset>
   <fieldset>
       <legend class="textos">Módulo do Sistema</legend>
       <p style="font-family: 'Comfortaa', cursive;">  
-      <input type="text" class="inputs" [(ngModel)]="sistema.modulo" placeholder="Ex: Ferramentas externas">
+      <input type="text" class="inputs" [(ngModel)]="usuario.modulo" placeholder="Ex: Ferramentas externas">
       </p>
     </fieldset> 
 </div>
@@ -48,7 +48,7 @@
       <div>
         <fieldset>
         <legend class="textos">Atividade a ser executada</legend>
-        <textarea class="inputLarge" rows="50" cols="40" [(ngModel)]="sistema.atividade"></textarea>
+        <textarea class="inputLarge" rows="50" cols="40" [(ngModel)]="usuario.atividade"></textarea>
       </fieldset>
         <button class="button button2"(click)="send()">Solicitar</button>
       </div> 
@@ -68,5 +68,5 @@
   <input type="text" placeholder="Usuario" class="inputsReference" [(ngModel)]="usuario.userReference">
 </div>
 <div *ngIf="!this.isReferenced">
-    <input type="text" placeholder="Lista/Perfil de acesso" class="inputsReference" [(ngModel)]="sistema.funcionalidade">
+    <input type="text" placeholder="Lista/Perfil de acesso" class="inputsReference" [(ngModel)]="usuario.funcionalidade" >
 </div>

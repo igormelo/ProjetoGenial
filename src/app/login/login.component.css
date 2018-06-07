@@ -1,22 +1,29 @@
-.imgcontainer{
-    text-align: center;
-    margin: 24px 0 12px 0;
+.largura{
+  max-width: 70%;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid rgb(209, 208, 208);
+  /* background-color: rgb(221, 220, 220); */
+  background-image: url("https://static1.squarespace.com/static/56e88be2746fb97fd1a9dfa5/t/58fba1d6725e25a3d1915e39/1492885976419/gray-geometric-background+.jpg?format=1500w");
 }
 .container{
     text-align:  center;
+    /* padding: 26px; */
+    /* margin: 25px 0 12px 0; */
 }
 input[type=text], input[type=password] {
-    width: 100%;
-    padding: 10px 50px;
-    margin: 10px 0;
+    width: 50%;
+    padding: 10px 10px 10px 10px;
+    margin: 10px 10;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
     text-align: center;
 }
 button {
-    background-color: #043d99;
+    background-color: #5b90cd;
     color: white;
+    font-family: 'Lato', sans-serif;
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
@@ -59,11 +66,11 @@ button {
     animation: loading 3s linear infinite;
   }
   .bar:nth-child(2) {
-    background-color: #f3eea7;
+    background-color: #888fee;
     animation: loading 3s linear 1s infinite;
   }
   .bar:nth-child(3) {
-    background-color: #fdba2c;
+    background-color: #585555;
     animation: loading 3s linear 2s infinite;
   }
   @keyframes loading {

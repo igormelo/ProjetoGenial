@@ -1,20 +1,31 @@
-<div class="row" style="padding-top: 50px">
-    <div class="imgcontainer">
-        <img src="https://i.imgur.com/t8SSizK.png" alt="Avatar" class="avatar">
-    </div>
+<div style="padding-top: 10%">
+               
         <div class="container">
-        <label style="font-family: 'Comfortaa', cursive;;font-size: 20px">Login </label>
-        <input type="text" [(ngModel)]="user.user" id="usuario" style="font-family: 'Comfortaa', cursive;;font-size: 20px; color: grey">
-
-        <label style="font-family: 'Comfortaa', cursive;;font-size: 20px">Senha</label>
-        <input [(ngModel)]="user.password" type="password" id="senha" class="validate" style="font-size: 20px">
-        <button class="button" (click)="login()" style="font-family: 'Anton', sans-serif;font-size: 20px">{{showLoading? 'Carregando...':'Login'}} </button> 
+                <mat-card class="largura">
+        <img src="https://i.imgur.com/t8SSizK.png" alt="Avatar" class="avatar" style="width: 50%;padding-bottom: 5%">
+        
+        <div>
+                <label style="font-family: 'Raleway', sans-serif;;font-size: 20px;color: grey">Login: </label>
+                <i class="glyphicon glyphicon-user"></i>
+        <input matInput type="text" [(ngModel)]="user.user" id="usuario" style="font-family: 'Comfortaa', cursive;font-size: 20px">
+        </div>
+        
+        <div style="padding-top: 30px; padding-bottom: 30px">
+        <label style="font-family: 'Raleway', sans-serif;;font-size: 20px;color: grey">Senha: </label>
+        <i class="glyphicon glyphicon-lock"></i>
+        <input matInput [(ngModel)]="user.password" type="password" id="senha" class="validate" style="font-size: 20px">
+        </div>
+        <button class="button" (click)="login()">{{showLoading? 'Carregando...':'Login'}} </button>
+                
+        
         <div class="loader" *ngIf="isSended">
                 <div class="bar"></div>
                 <div class="bar"></div>
                 <div class="bar"></div>
             </div>
-    </div>
+        </mat-card>
+        </div> 
+    
 
 <!--<div *ngIf="showLoading" class="loader"></div>-->
 </div>

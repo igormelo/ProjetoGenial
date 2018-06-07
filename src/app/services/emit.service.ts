@@ -1,5 +1,4 @@
 import { Injectable, EventEmitter } from '@angular/core';
-import { AngularFireList } from 'angularfire2/database';
 
 @Injectable()
 export class EmitService {

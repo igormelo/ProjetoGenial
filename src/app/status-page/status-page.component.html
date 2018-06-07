@@ -1,6 +1,6 @@
 <div class="mydiv">
   <fieldset>
-      <legend class="textos">Pesquisar</legend>
+      <legend class="textos">Status da solicitação</legend>
     <input type="text" id="myInput" placeholder="Procurar registro" [(ngModel)]="filter"> <button class="button button2" (click)="search()">Procurar</button>
     </fieldset>
 <table id="table">
@@ -9,15 +9,21 @@
       <th>Hora</th>
       <th>Id</th>
       <th>Atividade</th>
-      <th>Status</th>
+      <th>Gestor</th>
+      <th>Owner</th>
+      <th>Processos</th>
+      <th>Compliance</th>
     </tr>
   </thead>
   <tbody>
-    <tr *ngFor="let r of res | filter:filter">
-      <td *ngIf="filter">{{r.hora | date:'dd/MM/yy hh:mm:ss'}}</td>
-      <td *ngIf="filter">{{r.id}}</td>
+    <tr *ngFor="let r of res | filter:filter"  [ngStyle]="{'color':r.statusGestor === 'Aprovado' && r.statusOwner === 'Aprovado' && r.statusProcesos === 'Aprovado' && r.statusCompliance === 'Aprovado' ? 'green' : ''}">
+      <td *ngIf="filter">{{r.dia | date:'dd/MM/yy hh:mm:ss'}}</td>
+      <td *ngIf="filter">{{r.uid}}</td>
       <td *ngIf="filter">{{r.atividade}}</td>
-      <td *ngIf="filter">Pendente</td>
+      <td *ngIf="filter" [ngStyle]="{'color': r.statusGestor === 'Aprovado' ? 'green':'red'}">{{r.statusGestor === 'Aprovado'?'Aprovado' : 'Pendente'}}</td>
+      <td *ngIf="filter"[ngStyle]="{'color': r.statusOwner === 'Aprovado' ? 'green':'red'}">{{r.statusOwner === 'Aprovado'?'Aprovado':'Pendente'}}</td>
+      <td *ngIf="filter" [ngStyle]="{'color': r.statusProcessos === 'Aprovado' ? 'green':'red'}">{{r.statusProcessos === 'Aprovado'?'Aprovado':'Pendente'}}</td>
+      <td *ngIf="filter" [ngStyle]="{'color': r.statusCompliance === 'Aprovado' ? 'green':'red'}">{{r.statusCompliance === 'Aprovado'?'Aprovado':'Pendente'}}</td>
     </tr>
   </tbody>
 </table>

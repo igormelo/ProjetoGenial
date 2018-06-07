@@ -1,7 +1,6 @@
 import { Component, OnInit, Input,EventEmitter } from '@angular/core';
-import { User } from '../user';
+import { Usuario } from '../usuario';
 import { System } from '../system';
-import {AngularFireDatabase} from 'angularfire2/database';
 import {Http,Headers,Response,URLSearchParams, RequestOptions} from '@angular/http';
 import 'rxjs/add/operator/toPromise';
 import { headersToString } from 'selenium-webdriver/http';
@@ -16,15 +15,14 @@ import { UserService } from '../services/user.service';
   styleUrls: ['./usuario.component.css']
 })
 export class UsuarioComponent implements OnInit {
-usuario: User = new User();
-sistema: System = new System();
+usuario = new Usuario();
 isReferenced: boolean;
 isSended: boolean;
 guid: any;
 header: Headers = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*',
 'Accept': 'application/json'
 });
-  constructor(private ad: AngularFireDatabase, private http: Http, private userService: UserService, private router: Router) { }
+  constructor(private http: Http, private userService: UserService, private router: Router) { }
 
   ngOnInit() {
     this.userService.getGuid().subscribe(data => this.guid = data);
@@ -36,63 +34,37 @@ header: Headers = new Headers({'Content-Type': 'application/json', 'Access-Contr
     setTimeout(function(){ x.className = x.className.replace("show", ""); }, 3000);
   }
 
-  Yes(){
-      this.isReferenced = true;
-  }
-  No(){
-    this.isReferenced = false;
+  Yes() { this.isReferenced = true; }
+  No() { this.isReferenced = false; }
 
-  }
   send(){
-    if(!this.usuario.email || !this.usuario.departamento || !this.usuario.gestor ||  !this.usuario.name || !this.sistema.atividade || !this.sistema.modulo || !this.sistema.nome){
+    let now: Date = new Date();
+    this.usuario.uid = this.guid;
+    this.usuario.dia = now;
+    if(!this.usuario.email || !this.usuario.departamento || !this.usuario.gestor ||  !this.usuario.name || !this.usuario.atividade || !this.usuario.modulo || !this.usuario.sistema){
       alert("Preencha todos os campos");
     }
-    let now: Date = new Date();
-    this.ad.list("registros").push({
-      id: this.guid,
-      hora: now.getTime(),
-      nome: this.usuario.name,
-      email: this.usuario.email,
-      departamento: this.usuario.departamento,
-      gestor: this.usuario.gestor,
-      referencia: this.usuario.userReference,
-      sistema: this.sistema.nome,
-      modulo: this.sistema.modulo,
-      atividade: this.sistema.atividade
-    }).then((t: any) =>{
-      this.isSended = true;
-      this.showSnack();
-      setTimeout(()=>{
-        let navigation: NavigationExtras = {
-          queryParams: {
-            guid: this.guid
-          }
+    if(this.isReferenced){
+      this.usuario.funcionalidade = null
+    } else {
+      this.usuario.userReference = null
+    }
+    this.createUser(this.usuario);
+    this.isSended = true;
+    this.showSnack();
+    setTimeout(()=>{
+      let navigation: NavigationExtras ={
+        queryParams: {
+          guid : this.guid,
         }
-        this.router.navigate(["status"], navigation);
-      },1000)
-    },(e: any) =>{
-      this.isSended = false;
-    })
+      }
+      this.router.navigate(["status"], navigation);
+    }, 1000)
+    console.log(JSON.stringify(this.usuario));
   }
-  sendEmail(){
-    let my = "https://us-central1-sendm-bdb00.cloudfunctions.net"
-    let url = `${my}/httpEmail`
-    let params: URLSearchParams = new URLSearchParams();
-    let headerss = new Headers({'Content-Type': 'application/json', 'Access-Control-Allow-Origin': '*'});
-    let options: RequestOptions = new RequestOptions({headers: headerss});
 
-    params.set('from', 'hello@angularfirebase.com');
-    params.set('subject','teste');
-    params.set('to', 'igor.leite@genialinvestimentos.com.br');
-    params.set('content','conteudo');
-
-    return this.http.post(url, params, options)
-    .toPromise()
-    .then((res)=>{
-      console.log(res);
-    })
-    .catch(err =>{
-      console.error(err);
-    })
+  createUser(usuario){
+    this.userService.create(usuario).subscribe(users => usuario = users);
+    console.log(usuario);
   }
 }
